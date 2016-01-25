@@ -10,6 +10,12 @@
     dest=~/.{{ item }}
   with_items: dotfiles
 
+- name: Install dotfiles
+  copy:
+    src={{ item }}
+    dest=~/.{{ item | regex_replace('[-_\.]?(?P<name>.+)', '\\g<name>')}}
+  with_items: dotfiles_by_user
+
 - name: Dotfile_urls deprecation
   debug: msg="dotfile_urls are no longer supported. Please add your dotfiles to this repo."
   when: dotfiles_urls | default(False)
