@@ -8,3 +8,6 @@
   get_url:
     dest=~/.vim/autoload/plug.vim
     url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+- name: Use Plug to install plugins
+  command: vim -c PlugInstall -c qa

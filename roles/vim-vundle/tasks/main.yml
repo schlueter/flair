@@ -4,8 +4,11 @@
     state=directory
     path=~/.vim/bundle
 
-- name: Install plug for vim
+- name: Install Vundle for vim
   git:
     dest=~/.vim/bundle/Vundle.vim
     repo=https://github.com/VundleVim/Vundle.vim.git
     version=master
+
+- name: Use Vundle to install plugins
+  command: vim -c PluginInstall -c qa
