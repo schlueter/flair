@@ -9,7 +9,6 @@ call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'bling/vim-airline'
   Plug 'fholgado/minibufexpl.vim'
-  Plug 'junegunn/fzf',           {'do': 'yes \| ./install'}
   Plug 'junegunn/goyo.vim',      {'on': 'Goyo'}
   Plug 'junegunn/limelight.vim', {'on':  'Limelight'}
   Plug 'junegunn/rainbow_parentheses.vim'
@@ -140,9 +139,6 @@ colo seoul256
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline Theme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" let g:airline_left_sep='>'
-" let g:airline_right_sep='<'
 let g:airline_inactive_collapse=1
 let g:airline_powerline_fonts=1
 let g:airline_exclude_filenames = ['MiniBufExplorer']

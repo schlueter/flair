@@ -1,7 +1,10 @@
+#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net,
 ---
 - hosts: all
   vars:
+    user: bschlueter
     prezto_repo: https://github.com/schlueter/prezto.git
+    dotfiles_user: bschlueter
     dotfiles:
     - aliases
     - gitconfig
