@@ -1,0 +1,33 @@
+[user]
+    name    = Alex Ginzburg
+    email   = alex.ginzburg@refinery29.com
+
+[alias]
+    cs      = commit -s
+    co      = checkout
+    l       = log --date=local --parents --graph
+    ln      = log --date=local --parents --graph --name-status
+    lm      = log --merges --date=local --name-status
+    ff      = merge --ff-only
+    unstage = rm --cached
+
+[color]
+    branch = auto
+    interactive = auto
+    showbranch = auto
+    status = auto
+
+[diff]
+    rename  = copy 
+
+[gc]
+    auto    = 0
+
+[push]
+    default = tracking
+
+[rerere]
+    enabled = 1
+[sendemail]
+    confirm = auto
+    chainreplyto = 0

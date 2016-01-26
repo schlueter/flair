@@ -1,0 +1,13 @@
+#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net,
+---
+- hosts: all
+  vars:
+    user: aginzburg
+    dotfiles_user: aginzburg
+    dotfiles:
+    - gitconfig
+    - profile
+    - tmux.conf
+    - vimrc
+  roles:
+  - user-dotfiles
