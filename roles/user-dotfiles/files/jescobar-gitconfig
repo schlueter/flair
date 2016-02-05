@@ -1,0 +1,39 @@
+[user]
+    email = joel.escobar@refinery29.com
+    name = Joel Escobar
+[alias]
+    # branch name
+    bn = rev-parse --abbrev-ref HEAD
+    br = branch
+    ch = cherry-pick
+    ci = commit
+    co = checkout
+    rev = rev-parse HEAD
+    rs = reset --soft HEAD^1
+    # commits since branch from master
+    sb = log origin/master..
+    st = status
+    # only modified files
+    stm = status -uno
+    # only unversioned files
+    un = ls-files --others --exclude-standard
+    wc = whatchanged -p --
+[color]
+    ui = auto
+[color "branch"]
+    current = red reverse
+    local = yellow
+    remote = blue
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[core]
+    excludesfile = ~/.gitignore_global
+[push]
+    default = simple
