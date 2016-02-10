@@ -10,9 +10,6 @@
     dest=~/.{{ item }}
   with_items: dotfiles
 
-- name: Download dotfiles
-  get_url:
-    dest=~/.{{ item | basename | regex_replace('[-_\.]?(?P<name>.+)', '\\g<name>') }}
-    url={{ item }}
-    force=yes
-  with_items: dotfile_urls
+- name: Dotfile_urls deprecation
+  debug: msg="dotfile_urls are no longer supported. Please add your dotfiles to this repo."
+  when: dotfiles_urls
