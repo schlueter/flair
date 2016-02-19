@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net,
+---
+- hosts: all
+  vars:
+    user: amoller
+    dotfiles_user: amoller
+    dotfiles:
+      - gitconfig
+      - zshrc
+  roles:
+    - oh-my-zsh
+    - user-dotfiles
