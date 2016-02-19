@@ -12,4 +12,4 @@
 
 - name: Dotfile_urls deprecation
   debug: msg="dotfile_urls are no longer supported. Please add your dotfiles to this repo."
-  when: dotfiles_urls
+  when: dotfiles_urls | default(False)
