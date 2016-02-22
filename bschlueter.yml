@@ -18,6 +18,7 @@
     - zshenv
     - zshrc
   roles:
+  - hub
   - user-dotfiles
   - vim-plug
   - zsh-prezto
