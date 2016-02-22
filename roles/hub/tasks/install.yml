@@ -1,4 +1,7 @@
 ---
+- name: Set ansible_system var
+  setup: filter=ansible_system
+
 - name: Set hub binary url for Linux
   when: ansible_system == "Linux"
   set_fact:
