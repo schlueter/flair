@@ -1,10 +1,9 @@
-# -*- mode: ini -*-
-# vi: set ft=ini :
+# vi: set ft=dosini :
 [user]
     name = Schlueter
     email = bs@schlueter.blue
 [core]
-    excludesfile = /Users/blue/.gitignore_global
+    excludesfile = ~/.gitignore_global
     pager = less -R
 [difftool]
     prompt = false
@@ -18,7 +17,3 @@
     helper = osxkeychain
 [fetch]
     prune = true
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
