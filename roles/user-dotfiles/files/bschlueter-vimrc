@@ -133,7 +133,10 @@ nnoremap <Leader>n :bn<CR>
 syntax enable
 set background=dark
 let g:seoul256_background = 236
-colo seoul256
+try
+  colo seoul256
+catch
+endtry
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
