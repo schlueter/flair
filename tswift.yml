@@ -8,10 +8,7 @@
     oh_my_zsh_repo_branch: feature/blusch-theme
 
     dotfiles_user: tswift
-    dotfiles: [ zshrc ]
-    dotfile_urls:
-    - https://raw.githubusercontent.com/tswift13/dotfiles/master/aliases
-    - https://raw.githubusercontent.com/tswift13/dotfiles/master/vimrc
+    dotfiles: [ zshrc aliases vimrc ]
 
   roles:
   - user-dotfiles
