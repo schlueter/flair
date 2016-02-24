@@ -1,5 +1,6 @@
-# devops-homefolders
-Let's all share how we provision our home folders
+# Vespa
+###### _For all your customization needs_
+Let's all share our system customizations
 
 ## Usage
 
@@ -9,7 +10,7 @@ git clone git@github.com:refinery29/devops-homedirs.git
 cd devops-homedirs
 ansible-playbook tswift.yml --inventory vagrant.local.rf29.net, --extra-vars dotfiles_user=tswift
 ```
-The `ansible-playbook` command will run the *tswift.yml* playbook against vagrant.local.rf29.net (the ',' is necessary as an inventory is usually more than one machine) with the extra variable `dotfiles_user` set to `tswift`.
+The `ansible-playbook` command will run the **tswift.yml** playbook against vagrant.local.rf29.net (the ',' is necessary as an inventory is usually more than one machine) with the extra variable `dotfiles_user` set to `tswift`.
 
 ## Playbooks
 The playbooks are where the logic for setting up machines is directed. I use the word "directed" because most of the logic is contained in the roles. The simplest playbooks in this repo could just consist of list of `roles`, but most will include some variables–specified as `vars`–and perhaps some additional logic in the form of `tasks` or even `pre_tasks`.
