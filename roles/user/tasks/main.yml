@@ -8,6 +8,15 @@
     getent passwd {{ user }}
   ignore_errors: yes
   changed_when: no
+  when: ansible_system == "Linux"
+  register: passwd
+
+- name: Check for user
+  command:
+    id {{ user }}
+  ignore_errors: yes
+  changed_when: no
+  when: ansible_system == "Darwin"
   register: passwd
 
 - name: Fail if user does not exist
