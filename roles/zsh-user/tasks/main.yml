@@ -1,6 +1,6 @@
 ---
 - name: Set zsh as shell for user
-  sudo: yes
+  become: yes
   user:
     name={{ user }}
     shell=/bin/zsh
