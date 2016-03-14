@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net,
+#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net, --ask-sudo-pass
 ---
 - hosts: all
   vars:
