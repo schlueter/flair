@@ -25,14 +25,13 @@ export CLASSPATH=$HOME/workspace/libs
 export LESS='-g -i -M -R -S -w -z-4'
 export R29=~/workspace/r29
 export PYTHONSTARTUP=~/.pythonrc
+export GITHUB_USER=schlueter
+export GITHUB_TOKEN="${GITHUB_TOKEN:-THIS IS REQUIRED FOR HUB}"
 
 which pyenv > /dev/null && eval "$(pyenv init -)"
 unsetopt CORRECT
 
-path=(
-  /usr/local/{bin,sbin}
-  $path
-)
+path=(/usr/local/{bin,sbin} $path)
 
 path_additions=(
   /var/devops-r29-scripts/bin
