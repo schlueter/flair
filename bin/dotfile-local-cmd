@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+"${2:-diff}" "$HOME/$1" "roles/user-dotfiles/files/${FLAIR_USER:-$(whoami)}-${1#.}"

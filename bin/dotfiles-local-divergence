@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+while read -rd '' file
+do
+    file_basename=$(basename "$file")
+    flair_file="roles/user-dotfiles/files/bschlueter-${file_basename#.}"
+    [[ -s "$flair_file" && $(diff "$file" "$flair_file") != '' ]] && echo "$file"
+done < <(find ~ -maxdepth 1 -name ".*" -type f -print0)
