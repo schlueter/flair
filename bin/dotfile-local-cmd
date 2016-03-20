@@ -1,2 +1,51 @@
 #!/usr/bin/env bash
-"${2:-diff}" "$HOME/$1" "roles/user-dotfiles/files/${FLAIR_USER:-$(whoami)}-${1#.}"
+dir="$( cd "$( dirname "$0" )" && pwd )"
+cmd=${1:-diff}
+file=${2:-zshrc}
+file=${file#.}
+user="${FLAIR_USER:-$(whoami)}"
+local_file="$HOME/.${file}"
+flair_file="$dir/../roles/user-dotfiles/files/${user}-${file}"
+flair_file="${flair_file//\/$(basename "$dir")\/../}"
+flair_file="${flair_file#$(pwd)/}"
+
+declare -a return_codes
+
+if [[ ! -f "$flair_file" ]]
+then
+    cat <<EOM >&2
+Flair has no $file for the user $user.
+If you meant a different user, run this command with \`FLAIR_USER=<user> $0\`.
+EOM
+return_codes+=(3)
+fi
+
+if [[ ! -f "$local_file" ]]
+then
+    cat <<EOM >&2
+You have no .$file, did you mean something else?
+EOM
+return_codes+=(4)
+fi
+
+case "${#return_codes[*]}" in
+    2) exit 5;;
+    1) exit "${return_codes[0]}";;
+esac
+
+echo "Executing: $cmd \"$local_file\" \"$flair_file\""
+
+# shellcheck disable=SC2086
+output=$(bash -c "$cmd \"$local_file\" \"$flair_file\"")
+if [[ $? != 0 ]]
+then
+    exit
+fi
+
+if [[ "$output" != *[![:space:]]* ]]
+then
+    echo -e "$output"
+else
+    echo -e "$(basename "$0"): No non whitespace output" >&2
+fi
+exit 0
