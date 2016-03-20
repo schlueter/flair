@@ -4,6 +4,7 @@
   ignore_errors: true
   changed_when: false
   register: which_hub
+  always_run: yes
 
 - include: install.yml
   become: yes
