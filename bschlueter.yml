@@ -1,6 +1,7 @@
-#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net, --ask-sudo-pass
+#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net,
 ---
 - hosts: all
+  gather_facts: yes
   vars:
     user: bschlueter
     prezto_repo: https://github.com/schlueter/prezto.git
