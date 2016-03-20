@@ -1,21 +1,25 @@
 ---
 - name: Set ansible_system var
   setup: filter=ansible_system
+  always_run: yes
 
 - name: Set hub binary url for Linux
-  when: ansible_system == "Linux"
   set_fact:
     hub_binary_filename: '{{ hub_linux_binary_filename }}'
+  when: ansible_system == "Linux"
+  always_run: yes
 
 - name: Set hub binary url for OS X
   set_fact:
     hub_binary_filename: '{{ hub_darwin_binary_filename }}'
   when: ansible_system == "Darwin"
+  always_run: yes
 
 - name: Fail if hub_binary_filename not set
   fail: msg='Could not determine system type for hub. Hub will not be installed.'
   ignore_errors: true
   when: hub_binary_filename is undefined
+  always_run: yes
 
 - name: Download hub binary packages
   get_url:
@@ -33,5 +37,3 @@
 - name: Install hub
   command:
     /tmp/{{ hub_binary_filename | regex_replace('\.tgz', '') }}/install
-
-
