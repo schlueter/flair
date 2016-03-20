@@ -36,16 +36,4 @@ esac
 echo "Executing: $cmd \"$local_file\" \"$flair_file\""
 
 # shellcheck disable=SC2086
-output=$(bash -c "$cmd \"$local_file\" \"$flair_file\"")
-if [[ $? != 0 ]]
-then
-    exit
-fi
-
-if [[ "$output" != *[![:space:]]* ]]
-then
-    echo -e "$output"
-else
-    echo -e "$(basename "$0"): No non whitespace output" >&2
-fi
-exit 0
+$cmd "$local_file" "$flair_file"
