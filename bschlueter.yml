@@ -23,3 +23,10 @@
   - user-dotfiles
   - vim-plug
   - zsh-prezto
+  tasks:
+  - name: Install my bin repo
+    git:
+      dest=~/bin
+      repo=https://github.com/schlueter/bin.git
+      version=master
+    ignore_errors: yes
