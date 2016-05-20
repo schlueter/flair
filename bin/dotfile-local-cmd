@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 dir="$( cd "$( dirname "$0" )" && pwd )"
 cmd=${1:-diff}
-file=${2:-zshrc}
+file=${2}
+if [[ -z "$file" ]]
+then
+    echo "A file must be specified as the second argument"
+    exit 1
+fi
 file=${file#.}
 user="${FLAIR_USER:-$(whoami)}"
 local_file="$HOME/.${file}"

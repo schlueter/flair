@@ -37,7 +37,6 @@ path=(/usr/local/{bin,sbin} $path)
 path_additions=(
     /var/devops-r29-scripts/bin
     /Applications/Postgres.app/Contents/Versions/9.4/bin
-    /usr/local/opt/coreutils/libexec/gnubin
     /opt/chefdk/bin
     $HOME/.rbenv/bin
     $HOME/bin
