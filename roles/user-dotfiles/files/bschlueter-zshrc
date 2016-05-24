@@ -3,11 +3,30 @@ touch ~/.todo && cat ~/.todo
 [[ "$OSTYPE" == darwin* ]] && export BROWSER='open'
 [[ -z "$LANG" ]]           && export LANG='en_US.UTF-8'
 
-export NVM_DIR="/Users/bschlueter/.nvm"
+export CLASSPATH=$HOME/workspace/libs
+export EDITOR=vim
+export EVA_VAGRANT_WORKSPACE_URL=https://s3.amazonaws.com/r29-vagrant/workspace.tgz
+export FLAIR_USER=bschlueter
+export LESS='-g -i -M -R -S -w -z-4 -F -X'
+export LESSOPEN='|lesspipe %s'
+export NVM_DIR=${HOME}/.nvm
+export PAGER=less
+export PYTHONSTARTUP=~/.pythonrc
+export R29=~/workspace/r29
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+export VISUAL=vim
+
+export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID:-AWS_ACCESS_KEY_ID is required by AWS cli}"
+export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY:-AWS_SECRET_ACCESS_KEY is required by AWS cli}"
+export GITHUB_TOKEN="${GITHUB_TOKEN:-THIS IS REQUIRED FOR HUB}"
+export GITHUB_USER=schlueter
+export HOMEBREW_GITHUB_API_TOKEN=$GITHUB_TOKEN
+export TRELLO_API_KEY="${TRELLO_API_KEY:-THIS IS REQUIRED FOR TRELLO API USAGE}"
+export TRELLO_API_TOKEN="${TRELLO_API_TOKEN:-THIS IS REQUIRED FOR TRELLO API USAGE}"
 
 extras=(
-  "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  "$NVM_DIR/nvm.sh"
+  ${ZDOTDIR:-$HOME}/.zprezto/init.zsh
+  $NVM_DIR/nvm.sh
   /usr/local/opt/autoenv/activate.sh
   /Users/blue/.travis/travis.sh
   ~/.fzf.zsh
@@ -17,38 +36,22 @@ extras=(
   ~/.secrets
 ); for f in ${extras[@]}; do [[ -s $f ]] && source $f; done
 
-export EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
-export CLASSPATH=$HOME/workspace/libs
-export LESS='-g -i -M -R -S -w -z-4 -F -X'
-export R29=~/workspace/r29
-export FLAIR_USER=bschlueter
-export PYTHONSTARTUP=~/.pythonrc
-export GITHUB_USER=schlueter
-export GITHUB_TOKEN="${GITHUB_TOKEN:-THIS IS REQUIRED FOR HUB}"
-export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID:-AWS_ACCESS_KEY_ID is required by AWS cli}"
-export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY:-AWS_SECRET_ACCESS_KEY is required by AWS cli}"
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
-export EVA_VAGRANT_WORKSPACE_URL=https://s3.amazonaws.com/r29-vagrant/workspace.tgz
+[[ -d ~/.zshrc.d ]] && for f in $(find ~/.zshrc.d/ -type f); do source $f; done
 
 path=(/usr/local/{bin,sbin} $path)
-
 path_additions=(
     /var/devops-r29-scripts/bin
     /Applications/Postgres.app/Contents/Versions/9.4/bin
-    /usr/local/opt/coreutils/libexec/gnubin
     /opt/chefdk/bin
     $HOME/.rbenv/bin
     $HOME/bin
 ); for p in ${path_additions[@]}; do [[ -d $p ]] && path=($p $path); done
 
-which pyenv > /dev/null && eval "$(pyenv init -)"
-which rbenv > /dev/null && eval "$(rbenv init -)"
+which pyenv &> /dev/null && eval "$(pyenv init -)"
+which rbenv &> /dev/null && eval "$(rbenv init -)"
+
+fpath=(/Users/blue/.zsh-completions /usr/local/share/zsh-completions $fpath)
+typeset -gU cdpath fpath mailpath path
 
 unsetopt CORRECT
 setopt NO_NOMATCH
-
-fpath=(/Users/blue/.zsh-completions /usr/local/share/zsh-completions $fpath)
-
-typeset -gU cdpath fpath mailpath path

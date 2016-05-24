@@ -163,10 +163,9 @@ alias gw='git browse'
 
 #!!! An alias doesn't work, use the function instead !!!
 git () { hub $@ }
-gdv() { git diff -w "$@" | view - }
+gdv () { git diff -w "$@" | view - }
+gfg () { git ls-files | grep $@ }
 compdef _git gdv=git-diff
-gfg() { git ls-files | grep $@ }
-compdef gfg=grep
 
 # Random aliases
 alias .z='TASKS=1 source ~/.zshrc'
@@ -180,11 +179,11 @@ alias ish='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias rm!='rm -f'
 alias tt=travistest
 
-use-gnu-tools() {
+use-gnu-tools () {
     export PATH=/usr/local/Cellar/gnu-sed/4.2.2/libexec/gnubin:/usr/local/Cellar/coreutils/8.25/libexec/gnubin/:$PATH
 }
 
-realpath() {
+realpath () {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
@@ -195,3 +194,9 @@ colours () {
 		printf "\x1b[38;5;${i}mcolour${i}\n"
 	done
 }
+
+agent () {
+    eval `ssh-agent -s`
+    ssh-add
+}
+
