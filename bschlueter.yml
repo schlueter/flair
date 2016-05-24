@@ -85,6 +85,19 @@
     - pypy3-2.4.0
     nvm_versions:
     - v6.2.0
+    brew_taps:
+    - caskroom/cask
+    - homebrew/core
+    - homebrew/versions
+    brew_casks:
+    - dockertoolbox
+    - electric-sheep
+    - firefox
+    - gpgtools
+    - iterm2
+    - vagrant
+    - virtualbox
+    - vmware-fusion
   roles:
   - hub
   - user-dotfiles
@@ -97,14 +110,3 @@
       repo=https://github.com/schlueter/bin.git
       version=master
     ignore_errors: yes
-caskroom/cask
-homebrew/core
-homebrew/versions
-dockertoolbox
-electric-sheep
-firefox
-gpgtools
-iterm2
-vagrant
-virtualbox
-vmware-fusion
