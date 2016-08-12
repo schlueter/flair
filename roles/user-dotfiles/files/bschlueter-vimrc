@@ -4,6 +4,7 @@ set nocompatible
 
 call plug#begin()
 
+  Plug 'suan/vim-instant-markdown'
   Plug 'ConradIrwin/vim-bracketed-paste'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'airblade/vim-gitgutter'
@@ -20,7 +21,6 @@ call plug#begin()
   Plug 'scrooloose/syntastic'
   Plug 'tmux-plugins/vim-tmux'
   Plug 'tpope/vim-commentary', {'on': '<Plug>Commentary'}
-  Plug 'tpope/vim-cucumber'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-git'
@@ -102,14 +102,6 @@ if exists('&colorcolumn')
   set colorcolumn=80
 endif
 
-"" Line number management
-"au FocusLost * :set number
-"autocmd InsertEnter * :set number
-"if exists('&relativenumber')
-"  au FocusGained * :set relativenumber
-"  autocmd InsertLeave * :set relativenumber
-"endif
-
 " Spaces, not tabs
 set expandtab tabstop=2 shiftwidth=2
 
@@ -121,9 +113,6 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:%
 
 " Because typos
 cmap W :w
-
-" Let's not
-cmap bd :q
 
 " MiniBufExplorer shortcuts
 nnoremap <Leader>q :MBEToggle<CR>
@@ -138,6 +127,10 @@ endwhile
 " Some buffer switching shortcuts
 nnoremap <Leader>p :bp<CR>
 nnoremap <Leader>n :bn<CR>
+
+" Spell checking TODO toggle
+nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
+nnoremap <Leader>S :set nospell<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
@@ -164,14 +157,33 @@ let g:airline_exclude_filenames = ['MiniBufExplorer']
 let g:limelight_conceal_ctermfg = 240
 let g:goyo_width = 97
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+nnoremap <Leader>ll :Limelight!!<CR>
 
-highlight StatusLineNC ctermbg=none
-highlight StatusLine   ctermbg=none
-highlight VertSplit    ctermbg=none
-highlight NonText      ctermbg=none
-highlight Normal       ctermbg=none
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  MBEClose
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  highlight StatusLineNC ctermbg=none
+  highlight StatusLine   ctermbg=none
+  highlight VertSplit    ctermbg=none
+  highlight NonText      ctermbg=none
+  highlight Normal       ctermbg=none
+  MBEOpen
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
@@ -188,6 +200,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Customizations
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_flake8_args = "--ignore=E402,F403,E501,E302,F811"
 let g:syntastic_sh_shellcheck_args = "-x"
-let g:syntastic_cucumber_cucumber_args="--profile syntastic"
+
+" This has to be after something or it gets overridden
+" Let background transparency work
+highlight StatusLineNC ctermbg=none
+highlight StatusLine   ctermbg=none
+highlight VertSplit    ctermbg=none
+highlight NonText      ctermbg=none
+highlight Normal       ctermbg=none
+
