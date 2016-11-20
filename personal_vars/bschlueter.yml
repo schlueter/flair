@@ -1,0 +1,93 @@
+---
+prezto_repo: https://github.com/schlueter/prezto.git
+dotfiles:
+  - aliases
+  # - gitconfig
+  - gitignore_global
+  - pythonrc
+  - tmux.conf
+  - vimrc
+  - zlogin
+  - zlogout
+  - zpreztorc
+  - zshenv
+  - zshrc
+  - zshrc.d
+pip_packages:
+  - ansible
+  - awscli
+  - behave
+  - boto
+  - boto3
+  - bpython
+  - coverage
+  - GitPython
+  - Jinja2
+  - numpy
+  - paramiko
+  - pip
+  - PyHamcrest
+  - pylint
+  - PyYAML
+  - requests
+  - trepan
+  - vagrant-metadata
+  - virtualenv
+gem_packages:
+  - bundler
+  - cucumber
+  - jira
+  - json
+  - net-ssh
+  - pry
+  - rake
+  - serverspec
+npm_packages:
+  - broccoli
+brew_packages:
+  - autoconf
+  - automake
+  - bash
+  - bats
+  - coreutils
+  - git
+  - gnu-sed
+  - jq
+  - mobile-shell
+  - netcat
+  - nmap
+  - openssl
+  - pcre
+  - pyenv
+  - rbenv
+  - readline
+  - ruby-build
+  - s3cmd
+  - shellcheck
+  - sl
+  - sqlite
+  - tmux
+  - tree
+  - vim
+  - watch
+  - zsh
+# rbenv_versions:
+#   - 2.3.0
+# pyenv_versions:
+#   - 2.7.11
+#   - 3.5.1
+# nvm_versions:
+#   - v6.2.0
+brew_taps:
+  - caskroom/cask
+  - homebrew/core
+  - homebrew/versions
+brew_casks:
+  - dockertoolbox
+  - electric-sheep
+  - firefox
+  - gpgtools
+  - iterm2
+  - vagrant
+  - virtualbox
+  - vmware-fusion
