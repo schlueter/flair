@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook --inventory vagrant.local.rf29.net,
+#!/usr/bin/env ansible-playbook
 ---
 - hosts: all
   gather_facts: yes

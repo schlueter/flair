@@ -4,7 +4,6 @@ set nocompatible
 
 call plug#begin()
 
-  Plug 'suan/vim-instant-markdown'
   Plug 'ConradIrwin/vim-bracketed-paste'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'airblade/vim-gitgutter'
@@ -16,9 +15,12 @@ call plug#begin()
   Plug 'junegunn/seoul256.vim'
   Plug 'kchmck/vim-coffee-script'
   Plug 'navicore/vissort.vim'
+  Plug 'pearofducks/ansible-vim'
   Plug 'rooprob/vim-behave'
+  Plug 'schlueter/ruby.vim'
   Plug 'schlueter/zsh-ft.vim'
   Plug 'scrooloose/syntastic'
+  Plug 'suan/vim-instant-markdown'
   Plug 'tmux-plugins/vim-tmux'
   Plug 'tpope/vim-commentary', {'on': '<Plug>Commentary'}
   Plug 'tpope/vim-endwise'
@@ -27,8 +29,8 @@ call plug#begin()
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-tbone'
-  Plug 'vim-scripts/bats.vim'
   Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'vim-scripts/bats.vim'
 
   if s:darwin
     Plug 'zerowidth/vim-copy-as-rtf', {'on': 'CopyRTF'}
@@ -85,9 +87,6 @@ vnoremap // y/<C-R>"<CR>
 
 " Remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Html linting
-vmap ,x :%!tidy -q -i --show-errors 0<CR>
 
 " Always change working dir to current file dir
 autocmd BufEnter * silent! lcd %:p:h
@@ -202,7 +201,6 @@ let g:syntastic_check_on_wq = 0
 " Customizations
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_flake8_args = "--ignore=E402,F403,E501,E302,F811"
-let g:syntastic_sh_shellcheck_args = "-x"
 
 " This has to be after something or it gets overridden
 " Let background transparency work
