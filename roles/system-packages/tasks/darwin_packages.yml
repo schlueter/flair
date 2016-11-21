@@ -1,0 +1,6 @@
+---
+- name: Install Darwin system packages
+  homebrew:
+    name={{ item }}
+    update_homebrew=yes
+  with_items: "{{ darwin_packages }}"

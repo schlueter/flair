@@ -1,0 +1,23 @@
+---
+# Installs repos specified in the git_repos variable
+#
+# For example, with git_repos set to:
+#
+#   git_repos:
+#     -
+#       dest: ~/bin
+#       repo: https://github.com/schlueter/bin.git
+#       version: master
+#       can_fail: yes
+#
+# schlueter's bin repo will be cloned to ~/bin.
+#
+- name: Install user git-repos
+  git:
+    dest={{ item.dest }}
+    repo={{ item.repo }}
+    version={{ item.version | default('master') }}
+    accept_hostkey=yes
+    recursive=yes
+  ignore_errors: "{{ item.can_fail | default(False) }}"
+  with_items: "{{ git_repos }}"

@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Brandon Schlueter
+  description: Setup git repos from vars
+  company: Refinery29
+  license: MIT
+  min_ansible_version: 1.9.2
+  categories: []
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 14.04+
+    - name: OS X
+      versions:
+        - 10.10
+        - 10.11
+
+dependencies:
+  - role: system-packages
+    debian_packages: [ git ]
+    darwin_packages: [ git ]
