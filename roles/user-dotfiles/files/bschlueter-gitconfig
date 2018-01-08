@@ -1,4 +1,3 @@
-# vi: set ft=dosini :
 [user]
     name = Schlueter
     email = bs@schlueter.blue
@@ -14,6 +13,6 @@
 [pull]
     rebase = true
 [credential]
-    helper = osxkeychain
+    helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [fetch]
     prune = true

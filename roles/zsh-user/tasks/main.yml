@@ -1,6 +1,5 @@
 ---
 - name: Set zsh as shell for user
   become: yes
-  user:
-    name={{ user }}
-    shell=/bin/zsh
+  shell:
+    chsh -s /bin/zsh {{ user }}
